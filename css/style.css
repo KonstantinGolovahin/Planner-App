@@ -11,6 +11,7 @@ textarea {
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  
 }
 
 .jumbotron {
@@ -19,6 +20,8 @@ textarea {
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
+  
+  
 }
 
 .description {
@@ -36,7 +39,7 @@ textarea {
   border-top: 1px solid white;
 }
 
-.hour {
+.TaskHour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
@@ -57,12 +60,15 @@ textarea {
   color: white;
 }
 
+
 .taskButton {
+  
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  
 }
 
 .taskButton i:hover {
@@ -70,7 +76,19 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
-p{
-  display: inline;
-  vertical-align:middle;
+p {
+  text-align: center;
 }
+
+input {
+  text-align: center;
+}
+
+.card {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  height: 15vh;
+  
+  
+}
+

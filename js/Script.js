@@ -19,19 +19,6 @@ timerEternal++;
 
 
 
-// task object + format time to 2 digits
-var taskObject = [{
-    time: "14",
-    text: ["Task1"],
-  
-  }, {
-    time: "09",
-    text: ["Task2",],
-    
-  },
-  
-  
-  ];
 
 
 
@@ -56,23 +43,48 @@ function getTasks(arr) {
 
 
 
-// start up
+// start up timer
 timeControl();
 
 
 
-var tasks = [{
+var taskObject = [{
     "taskHour": "09",
-    "taskText": "do at 9Am",
+    "taskText": "Coffee break",
 },
 {
     "taskHour": "10",
-    "taskText": "do at 10 Am",
+    "taskText": "Some work",
 },
 {
-    "taskHour": "10",
-    "taskText": "do at 10 Am",
-}
+    "taskHour": "11",
+    "taskText": "Coffee break",
+},
+{
+    "taskHour": "12",
+    "taskText": "Coffee break",
+},
+{
+    "taskHour": "13",
+    "taskText": "Coffee break",
+},
+{
+    "taskHour": "14",
+    "taskText": "Coffee break",
+},
+{
+    "taskHour": "15",
+    "taskText": "Coffee break",
+},
+{
+    "taskHour": "16",
+    "taskText": "Coffee break",
+},
+{
+    "taskHour": "17",
+    "taskText": "",
+},
+
 ];
 
 //https://stackoverflow.com/questions/54868328/html-how-to-automatically-create-bootstrap-cards-from-a-js-file
@@ -88,15 +100,15 @@ cardBody.className = 'card-body row ';
 
 let taskHour = document.createElement('p');
 taskHour.innerText = task.taskHour;
-taskHour.className = 'col taskHour';
+taskHour.className = 'col-1  taskHour';
 
-let taskText = document.createElement('p');
-taskText.innerText = task.taskText;
-taskText.className = 'col taskText';
+let taskText = document.createElement('input');
+taskText.value = task.taskText;
+taskText.className = 'col  taskText';
 
 let taskButton = document.createElement('button');
-taskButton.innerText = "Enot";
-taskButton.className = 'col-2 taskButton';
+taskButton.innerText = "Save";
+taskButton.className = 'col-1 taskButton';
 
 
 
@@ -108,7 +120,7 @@ card.appendChild(cardBody);
 cardContainer.appendChild(card);
 
 }
-
+// task factory
 let initListOfTasks = () => {
 if (cardContainer) {
     document.getElementById('card-container').replaceWith(cardContainer);
@@ -116,9 +128,59 @@ if (cardContainer) {
 }
 
 cardContainer = document.getElementById('card-container');
-tasks.forEach((task) => {
+taskObject.forEach((task) => {
     createTaskCard(task);
+  
 });
 };
 
 initListOfTasks();
+
+
+
+
+// get this button hour and text
+$('.taskButton').on('click', function(){
+    var parent_id = $(this).parent().find('p').text();
+   // console.log(parent_id);
+    var parent_id1 = $(this).parent().find(':input').val();
+   // console.log(taskObject[0].taskHour);
+
+for( i=0;i<taskObject.length;i++) {
+    
+if(taskObject[i].taskHour===parent_id){
+   // console.log(taskObject[i].taskHour+taskObject[i].taskText+"Enot")
+
+// user data object 
+let userSave = {
+    TaskHour: parent_id,
+    TaskText: parent_id1,
+
+}
+// replace previous entry with current one
+taskObject.splice(i, 1,userSave);
+
+console.log(taskObject)
+localStorage.setItem("taskObject", JSON.stringify(taskObject));
+    
+}
+
+}
+
+
+
+   })
+
+
+
+
+   function addToLocalStorage() {
+
+    // attempt to read from local storage
+  //  storedData = getHighscores(storedData);
+    // update existing save with a new record
+    userSave.push(taskObject);
+    // write updated save to local storage
+    //localStorage.setItem("userSave", JSON.stringify(storedData));
+    console.log(taskObject)
+}
