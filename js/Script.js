@@ -26,6 +26,7 @@ timerEternal++;
   // new array for values from a local storage
 let taskSaved = [];
 taskSaved = getTasks(taskSaved);
+console.log(taskSaved)
 
 // retrieve values if any exists
 
@@ -128,7 +129,7 @@ if (cardContainer) {
 }
 
 cardContainer = document.getElementById('card-container');
-taskObject.forEach((task) => {
+taskSaved.forEach((task) => {
     createTaskCard(task);
   
 });
@@ -139,7 +140,7 @@ initListOfTasks();
 
 
 
-// get this button hour and text
+// get this button hour and text, replace previous entry, save all data to local storage
 $('.taskButton').on('click', function(){
     var parent_id = $(this).parent().find('p').text();
    // console.log(parent_id);
@@ -153,16 +154,16 @@ if(taskObject[i].taskHour===parent_id){
 
 // user data object 
 let userSave = {
-    TaskHour: parent_id,
-    TaskText: parent_id1,
+    taskHour: parent_id,
+    taskText: parent_id1,
 
 }
 // replace previous entry with current one
 taskObject.splice(i, 1,userSave);
 
-console.log(taskObject)
+// save to local storage
 localStorage.setItem("taskObject", JSON.stringify(taskObject));
-    
+
 }
 
 }
@@ -172,15 +173,3 @@ localStorage.setItem("taskObject", JSON.stringify(taskObject));
    })
 
 
-
-
-   function addToLocalStorage() {
-
-    // attempt to read from local storage
-  //  storedData = getHighscores(storedData);
-    // update existing save with a new record
-    userSave.push(taskObject);
-    // write updated save to local storage
-    //localStorage.setItem("userSave", JSON.stringify(storedData));
-    console.log(taskObject)
-}
