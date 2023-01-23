@@ -45,55 +45,6 @@ var taskObject = [{
 
 ];
 
-// Runs forever to display current time 
-function timeControl() {
-    timeCurrentDate = moment().format(" DD/MM/YYYY HH:mm:ss");
-    $("#currentDay").text(timeCurrentDate);
-    timerEternal++;
-    // timer step
-    setTimeout(timeControl, 1000);
-}
-
-// Colour code hourly blocks every minute
-function timeColourHour() {
-    $('.taskHour').each(function () {
-        // colour coding
-        let scheduleHour = this.innerText;
-
-        if (timeCurrentHour < scheduleHour) {
-            $(this).css('background-color', '#77dd77');
-
-        }
-        else if (timeCurrentHour > scheduleHour) {
-            $(this).css('background-color', '#d3d3d3');
-
-        }
-        else {
-            $(this).css('background-color', '#ff6961');
-
-        }
-
-    });
-
-}
-
-setInterval(function () {
-    timeColourHour();
-    //every minute
-}, 60000);
-
-// retrieve saved values from local storage if any exists
-function getTasks(arr) {
-    if (localStorage.getItem("taskObject") === null) {
-        arr = taskObject;
-
-    } else {
-        arr = JSON.parse(localStorage.getItem("taskObject"));
-
-    }
-    return arr;
-}
-
 // new array for values from a local storage
 let taskSaved = [];
 taskSaved = getTasks(taskSaved);
@@ -144,6 +95,57 @@ let initListOfTasks = () => {
 
     });
 };
+
+
+// Runs forever to display current time 
+function timeControl() {
+    timeCurrentDate = moment().format(" DD/MM/YYYY HH:mm:ss");
+    $("#currentDay").text(timeCurrentDate);
+    timerEternal++;
+    // timer step
+    setTimeout(timeControl, 1000);
+}
+
+// Colour code hourly blocks every minute
+function timeColourHour() {
+    $('.taskHour').each(function () {
+        // colour coding
+        let scheduleHour = this.innerText;
+
+        if (timeCurrentHour < scheduleHour) {
+            $(this).css('background-color', '#77dd77');
+
+        }
+        else if (timeCurrentHour > scheduleHour) {
+            $(this).css('background-color', '#d3d3d3');
+
+        }
+        else {
+            $(this).css('background-color', '#ff6961');
+
+        }
+
+    });
+
+}
+
+setInterval(function () {
+    timeColourHour();
+    //every minute
+}, 60000);
+
+// retrieve saved values from local storage if any exists
+function getTasks(arr) {
+    if (localStorage.getItem("taskObject") === null) {
+        arr = taskObject;
+
+    } else {
+        arr = JSON.parse(localStorage.getItem("taskObject"));
+
+    }
+    return arr;
+}
+
 
 //generate list of cards
 initListOfTasks();
