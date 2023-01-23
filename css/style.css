@@ -19,7 +19,7 @@ textarea {
   background-color: transparent;
   color: black;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 1px solid black;
   
   
 }
@@ -82,6 +82,7 @@ p {
 
 input {
   text-align: center;
+  vertical-align: middle;
 }
 
 .card {

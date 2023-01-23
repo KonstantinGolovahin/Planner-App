@@ -5,52 +5,43 @@ let timerEternal = 0;
 // current hour for colour code hourly blocks
 let timeCurrentHour = moment().format("HH");
 
-
-
-
-
-
-
-
-
-
 // Default array ot hours and tasks
 
 var taskObject = [{
-    "taskHour": "04",
-    "taskText": "Coffee break",
+    "taskHour": "09",
+    "taskText": " ",
 },
 {
-    "taskHour": "05",
-    "taskText": "Some work",
+    "taskHour": "10",
+    "taskText": " ",
 },
 {
     "taskHour": "11",
-    "taskText": "Coffee break",
+    "taskText": " ",
 },
 {
     "taskHour": "12",
-    "taskText": "Coffee break",
+    "taskText": " " ,
 },
 {
     "taskHour": "13",
-    "taskText": "Coffee break",
+    "taskText": " ",
 },
 {
     "taskHour": "14",
-    "taskText": "Coffee break",
+    "taskText": " ",
 },
 {
     "taskHour": "15",
-    "taskText": "Coffee break",
+    "taskText": " ",
 },
 {
     "taskHour": "16",
-    "taskText": "Coffee break",
+    "taskText": " ",
 },
 {
     "taskHour": "17",
-    "taskText": "Coffee break",
+    "taskText": " ",
 },
 
 ];
@@ -63,12 +54,11 @@ var taskObject = [{
 function timeControl () {
 timeCurrentDate = moment().format(" DD/MM/YYYY HH:mm:ss");
 $("#currentDay").text(timeCurrentDate);
-//console.log(timeCurrentHour)
 timerEternal++;
 
 
 $('.taskHour').each(function() {
-   // console.log(this.innerText)
+   // colour coding
     let scheduleHour = this.innerText;
 
     if(timeCurrentHour<scheduleHour) {
@@ -81,27 +71,15 @@ else{
     $(this).css('background-color', '#ff6961');
 }
 
-
-
 });
 
-
+// timer step
     setTimeout(timeControl, 1000); 
 }
 
 
 
-
-
-
-
-
-
-
-
-
-// retrieve values if any exists
-
+// retrieve saved values from local storage if any exists
 function getTasks(arr) {
     if (localStorage.getItem("taskObject") === null) {
         arr = taskObject;
@@ -118,45 +96,36 @@ function getTasks(arr) {
   // new array for values from a local storage
 let taskSaved = [];
 taskSaved = getTasks(taskSaved);
-console.log(taskSaved)
-
-
-
-
-
-// start up timer
-timeControl();
-
 
 // idea from https://stackoverflow.com/questions/54868328/html-how-to-automatically-create-bootstrap-cards-from-a-js-file
+// dynamically create a set of bootstrap cards for a list of array elements
 let cardContainer;
 
 let createTaskCard = (task) => {
-
+//card itself
 let card = document.createElement('div');
 card.className = 'card ';
-
+// card body
 let cardBody = document.createElement('div');
 cardBody.className = 'card-body row ';
-
+// hour
 let taskHour = document.createElement('p');
 taskHour.innerText = task.taskHour;
 taskHour.className = 'col-1  taskHour';
-
+// user input or saved task
 let taskText = document.createElement('input');
 taskText.value = task.taskText;
 taskText.className = 'col  taskText';
-
+// save button
 let taskButton = document.createElement('button');
 taskButton.innerText = "Save";
-taskButton.className = 'col-1 taskButton';
+taskButton.className = 'col-1  taskButton';
 
-
-
+// set card body element order
 cardBody.appendChild(taskHour);
 cardBody.appendChild(taskText);
 cardBody.appendChild(taskButton);
-
+// set a card body inside a card
 card.appendChild(cardBody);
 cardContainer.appendChild(card);
 
@@ -175,8 +144,12 @@ taskSaved.forEach((task) => {
 });
 };
 
-initListOfTasks();
 
+
+//generate list of cards
+initListOfTasks();
+// start up timer
+timeControl();
 
 
 
@@ -184,6 +157,11 @@ initListOfTasks();
 $('.taskButton').on('click', function(){
     var currentHour = $(this).parent().find('p').text();
     var currentText = $(this).parent().find(':input').val();
+
+
+// get updated list of tasks from storage 
+ taskObject = getTasks(taskSaved);
+
 
 for( i=0;i<taskObject.length;i++) {
     
@@ -205,3 +183,4 @@ localStorage.setItem("taskObject", JSON.stringify(taskObject));
    })
 
 
+  
