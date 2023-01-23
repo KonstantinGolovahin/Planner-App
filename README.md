@@ -11,7 +11,7 @@ This website is a simple calendar application that allows a user to save events 
 
 ## Link to deployed application 
 
-
+https://konstantingolovahin.github.io/Planner-App/
 
 ## Installation
 
