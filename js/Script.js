@@ -8,11 +8,11 @@ let timeCurrentHour = moment().format("HH");
 // Default array ot hours and tasks
 
 var taskObject = [{
-    "taskHour": "01",
+    "taskHour": "09",
     "taskText": " ",
 },
 {
-    "taskHour": "02",
+    "taskHour": "10",
     "taskText": " ",
 },
 {
