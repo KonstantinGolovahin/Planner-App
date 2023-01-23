@@ -1,95 +1,62 @@
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1;
-}
-
-textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-  
-}
-
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-color: lightgrey;
   color: black;
   border-radius: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 5px solid black;
+  padding-top: 1%;
   
-  
 }
 
-.description {
-  white-space: pre-wrap;
+h1 {
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
 }
 
-.time-block {
-  text-align: center;
-  border-radius: 15px;
+h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:600;
 }
-
-.row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;
-}
-
-.TaskHour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
-}
-
-/* .past {
-  background-color: #d3d3d3;
-  color: white;
-}
-
-.present {
-  background-color: #ff6961;
-  color: white;
-}
-
-.future {
-  background-color: #77dd77;
-  color: white;
-} */
-
 
 .taskButton {
-  
+
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   background-color: #06aed5;
   color: white;
+}
+
+p,
+.taskHour {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  font-size: larger;
   
-}
-
-.taskButton i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
-}
-
-p {
-  text-align: center;
 }
 
 input {
+
   text-align: center;
   vertical-align: middle;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+
 }
 
+/*  display side margins */
 .card {
   margin-left: 5vw;
   margin-right: 5vw;
-  height: 15vh;
-  
-  
+  border: 1px solid black;
 }
-
